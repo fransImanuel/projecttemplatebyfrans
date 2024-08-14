@@ -9,7 +9,7 @@ definitions:
   schemas.CreateUserRequest:
     properties:
       age:
-        type: string
+        type: integer
       email:
         type: string
       name:
@@ -70,6 +70,24 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: Create Role
+      tags:
+      - Roles
+  /v1/role/get-all:
+    get:
+      consumes:
+      - application/json
+      description: Get Role
+      operationId: Role-Get
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/schemas.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Get Role
       tags:
       - Roles
   /v1/user/create:

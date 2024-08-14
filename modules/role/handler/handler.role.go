@@ -20,7 +20,7 @@ func InitUserHandler(g *gin.Engine, RoleService role.Service) {
 
 	routeAPI := g.Group("/api/v1/role")
 	routeAPI.POST("/create", handler.CreateRoleHandler)
-	// routeAPI.GET("/get-all", handler.CreateUserHandler)
+	routeAPI.GET("/get-all", handler.GetAllRolesHandler)
 }
 
 // Create Role
@@ -54,21 +54,21 @@ func (h *RoleHandler) CreateRoleHandler(c *gin.Context) {
 
 }
 
-// // Get User
-// // @Tags Users
-// // @Summary Get User
-// // @Description Get User
-// // @ID User-Get
-// // @Security ApiKeyAuth
-// // @Accept  json
-// // @Produce  json
-// // @Success 200  {object} schemas.Response
-// // @Router /v1/user/get-all [get]
-// func (h *RoleHandler) GetAllUsersHandler(c *gin.Context) {
-// 	users, err := h.UserService.GetUsersService()
-// 	if err != nil {
-// 		utils.APIResponse(c, http.StatusInternalServerError, "Error", err.Error(), nil)
-// 		return
-// 	}
-// 	utils.APIResponse(c, http.StatusOK, "success", "Success Get Users", users)
-// }
+// Get Role
+// @Tags Roles
+// @Summary Get Role
+// @Description Get Role
+// @ID Role-Get
+// @Security ApiKeyAuth
+// @Accept  json
+// @Produce  json
+// @Success 200  {object} schemas.Response
+// @Router /v1/role/get-all [get]
+func (h *RoleHandler) GetAllRolesHandler(c *gin.Context) {
+	roles, err := h.RoleService.GetRolesService()
+	if err != nil {
+		utils.APIResponse(c, http.StatusInternalServerError, "Error", err.Error(), nil)
+		return
+	}
+	utils.APIResponse(c, http.StatusOK, "success", "Success Get Roles", roles)
+}

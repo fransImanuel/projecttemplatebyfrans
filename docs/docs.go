@@ -64,6 +64,35 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/role/get-all": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get Role",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Get Role",
+                "operationId": "Role-Get",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/schemas.Response"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/user/create": {
             "post": {
                 "security": [
@@ -157,7 +186,7 @@ const docTemplate = `{
             ],
             "properties": {
                 "age": {
-                    "type": "string"
+                    "type": "integer"
                 },
                 "email": {
                     "type": "string"

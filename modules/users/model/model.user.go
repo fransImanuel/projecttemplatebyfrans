@@ -13,7 +13,7 @@ type Users struct {
 	schemas.FullAudit
 
 	Name     *string     `json:"name,omitempty"  gorm:"column:Name"`
-	Age      *string     `json:"age,omitempty"  gorm:"column:Age"`
+	Age      *int64      `json:"age,omitempty"  gorm:"column:Age"`
 	Email    *string     `json:"email,omitempty"  gorm:"column:Email"`
 	Phone    *string     `json:"phone,omitempty"  gorm:"column:Phone"`
 	IsActive *bool       `json:"is_active,omitempty"  gorm:"column:IsActive;default:true"`

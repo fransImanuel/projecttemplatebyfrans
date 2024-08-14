@@ -7,7 +7,7 @@ import (
 )
 
 type FullAudit struct {
-	ID           int64          `gorm:"column:Id;primaryKey" json:"id"`
+	ID           int64          `gorm:"column:id;primaryKey" json:"id"`
 	DeletedTime  gorm.DeletedAt `json:"deleted_time,omitempty" gorm:"column:DeletedTime"`
 	CreatedTime  time.Time      `json:"created_time,omitempty" gorm:"column:CreatedTime"`
 	ModifiedTime time.Time      `json:"modified_time,omitempty" gorm:"column:ModifiedTime"`

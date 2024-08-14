@@ -1,7 +1,6 @@
 package model
 
 import (
-	"fmt"
 	"projecttemplatebyfrans/constant"
 	"projecttemplatebyfrans/schemas"
 	"time"
@@ -25,16 +24,6 @@ func (Roles) Migrate(tx *gorm.DB) error {
 	err := tx.AutoMigrate(&Roles{})
 	if err != nil {
 		return err
-	}
-
-	var count int64
-	if err := tx.Raw(`SELECT count(id)  FROM "Roles"`).Scan(&count).Error; err != nil {
-		fmt.Println(err)
-	}
-	if count == 0 {
-		// if err := tx.Exec(`INSERT INTO "Roles" (id, created_at, created_user, updated_at, updated_user, deleted_at, deleted_user, code, "name", value) VALUES (1, ?, 'system', null, null, null, null,'MAX_RANGE_SURVEY', null, '150')`, time.Now()).Error; err != nil {
-		// 	logrus.Errorln("❌ Error Insert RANGE_TIME_SURVEY in Config : ", err.Error())
-		// }
 	}
 
 	return nil
