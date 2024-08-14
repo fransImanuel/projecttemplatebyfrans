@@ -1,0 +1,124 @@
+definitions:
+  schemas.CreateRoleRequest:
+    properties:
+      name:
+        type: string
+    required:
+    - name
+    type: object
+  schemas.CreateUserRequest:
+    properties:
+      age:
+        type: string
+      email:
+        type: string
+      name:
+        type: string
+      phone:
+        type: string
+      role_id:
+        type: integer
+    required:
+    - age
+    - email
+    - name
+    - phone
+    - role_id
+    type: object
+  schemas.Response:
+    properties:
+      data: {}
+      message:
+        type: string
+      status:
+        description: Code    int64       `json:"code,omitempty"  `
+        type: string
+    type: object
+info:
+  contact:
+    email: yaour.personal.email@gmail.com
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server celler server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Project API
+  version: "1.0"
+paths:
+  /v1/role/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Role
+      operationId: Role-Create
+      parameters:
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.CreateRoleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/schemas.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Create Role
+      tags:
+      - Roles
+  /v1/user/create:
+    post:
+      consumes:
+      - application/json
+      description: Create User
+      operationId: User-Create
+      parameters:
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.CreateUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/schemas.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Create User
+      tags:
+      - Users
+  /v1/user/get-all:
+    get:
+      consumes:
+      - application/json
+      description: Get User
+      operationId: User-Get
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/schemas.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: Get User
+      tags:
+      - Users
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+    x-extension-openapi: '{"example": "value on a json format"}'
+swagger: "2.0"
