@@ -6,6 +6,7 @@ import (
 	"projecttemplatebyfrans/modules/users/model"
 
 	"gorm.io/gorm"
+	"gorm.io/gorm/clause"
 )
 
 type UsersRepository struct {
@@ -39,7 +40,7 @@ func (u *UsersRepository) GetUsersRepository() (*[]model.Users, error) {
 	db := u.DBPostgres
 
 	// Get all records
-	results := db.Find(&users)
+	results := db.Preload(clause.Associations).Find(&users)
 	// SELECT * FROM users;
 	if results.Error != nil {
 		return nil, results.Error
